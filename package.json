@@ -1,0 +1,42 @@
+{
+  "name": "entries-array",
+  "version": "1.0.0",
+  "description": "Returns an array of the key-value pairs of an Object, Map, Array, or Typed Array.",
+  "keywords": [
+    "array",
+    "iterator",
+    "map",
+    "object",
+    "set",
+    "typed array",
+    "entries",
+    "keys",
+    "values"
+  ],
+  "author": "John Lamansky",
+  "license": "MIT",
+  "homepage": "https://github.com/lamansky/entries-array",
+  "repository": "lamansky/entries-array",
+  "main": "index.js",
+  "files": [],
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "dependencies": {
+    "entries-iterator": "^1.0.0",
+    "sbo": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint-config-lamansky": "^1.0.0",
+    "mocha": "^5.0.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "eslintConfig": {
+    "extends": "lamansky",
+    "env": {
+      "mocha": true
+    }
+  }
+}
