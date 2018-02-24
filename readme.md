@@ -4,7 +4,7 @@ Returns an array of the key-value pairs of an Object, Map, Array, or Typed Array
 
 ## Installation
 
-Requires [Node.js](https://nodejs.org/) 6.0.0 or above.
+Requires [Node.js](https://nodejs.org/) 7.0.0 or above.
 
 ```bash
 npm i entries-array
