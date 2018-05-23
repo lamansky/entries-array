@@ -14,9 +14,14 @@ npm i entries-array
 
 The module exports a single function.
 
-### Parameter
+### Parameters
 
-Bindable: `c` (Array, Iterator, Object, Map, Set, or Typed Array)
+1. Bindable: `c` (Array, iterator, Object, Map, Set, string, or Typed Array)
+2. Optional: Object argument:
+    * `arrays` / `maps` / `sets` (arrays of classes/strings): Arrays of classes and/or string names of classes that should be treated as equivalent to `Array`/`Map`/`Set` (respectively).
+    * `inObj` (boolean): Whether or not to act like the “in” operator by including inherited Object properties. Only takes effect if `c` is an Object (i.e. not another recognized type). Defaults to `false`.
+    * `reflectObj` (boolean): Whether or not to include non-enumerable Object properties by using reflection. Only takes effect if `c` is an Object (i.e. not another recognized type). Defaults to `false`.
+    * `reverse` (boolean): If `true`, then entries are returned in reverse order. Defaults to `false`.
 
 ### Return Value
 
@@ -45,6 +50,32 @@ entries({key: 'value'}) // [['key', 'value']]
 // Supports the bind operator
 const obj = {key: 'value'}
 obj::entries() // [['key', 'value']]
+```
+
+#### Inherited Object Properties
+
+Include Object properties from the prototype chain by setting `inObj` to `true`:
+
+```javascript
+const entries = require('entries-array')
+
+function Cls () {}
+Cls.prototype.key = 'value'
+
+entries(new Cls(), {inObj: true}) // [['key', 'value']]
+```
+
+#### Non-Enumerable Object Properties
+
+Include non-enumerable Object properties by setting `reflectObj` to `true`:
+
+```javascript
+const entries = require('entries-array')
+
+const obj = {}
+Object.defineProperty(obj, 'key', {value: 'value', enumerable: false})
+
+entries(obj, {reflectObj: true}) // [['key', 'value']]
 ```
 
 ### Iterators
@@ -85,6 +116,16 @@ set.add('first')
 set.add('second')
 
 entries(set) // [[0, 'first'], [1, 'second']]
+```
+
+### Strings
+
+`entries-array` will treat a string like a character array.
+
+```javascript
+const entries = require('entries-array')
+
+entries('hi') // [[0, 'h'], [1, 'i']]
 ```
 
 ### Typed Arrays
