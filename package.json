@@ -1,6 +1,6 @@
 {
   "name": "entries-array",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Returns an array of the key-value pairs of an Object, Map, Array, or Typed Array.",
   "keywords": [
     "array",
