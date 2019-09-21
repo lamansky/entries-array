@@ -87,6 +87,13 @@ describe('entriesArray()', function () {
     assert.deepStrictEqual(entries(['a', 'b'], {reverse: true}), [[1, 'b'], [0, 'a']])
   })
 
+  it('should return copy of array of two-item arrays if `detectPairs` is true', function () {
+    const e = [[1, 2], [3, 4]]
+    assert.deepStrictEqual(entries(e, {detectPairs: true}), [[1, 2], [3, 4]])
+    assert.notStrictEqual(entries(e, {detectPairs: true}), e)
+    assert.deepStrictEqual(entries([[1, 2], [3, 4]]), [[0, [1, 2]], [1, [3, 4]]])
+  })
+
   it('should support the bind operator', function () {
     assert.deepStrictEqual(entries.call(['test']), [[0, 'test']])
   })
